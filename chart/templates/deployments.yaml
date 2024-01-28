@@ -51,8 +51,13 @@ spec:
                   name: "{{ .Release.Name }}-rcon-password"
                   key: "rconPassword"
           envFrom:
+          {{- if eq .Values.server.configSecretName "" }}
             - configMapRef:
                 name: "{{ .Release.Name }}-env-config"
+          {{- else }}
+            - secretRef:
+                name: "{{ .Values.server.configSecretName }}"
+          {{- end }}
           volumeMounts:
             - mountPath: /palworld
               name: datadir

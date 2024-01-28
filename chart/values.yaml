@@ -133,3 +133,4 @@ server:
       password: ""
       # -- (string) If not provided, a random server name will be generated with the "palworld_" prefix.
     server_name: ""
+  configSecretName: ""

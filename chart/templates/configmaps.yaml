@@ -1,3 +1,4 @@
+{{- if eq .Values.server.configSecretName "" }}
 {{- $cPwd := randAlphaNum 12 | nospace -}}
 {{- $sName := "" -}}
 apiVersion: v1
@@ -37,4 +38,5 @@ data:
   SERVER_NAME: {{ regexReplaceAll "\\W+" .Values.server.config.server_name "_" }}
   {{ else }}
   SERVER_NAME: {{ printf "%s_%s" "palworld" (randAlphaNum 6 | nospace) }}
+  {{ end }}
   {{ end }}
