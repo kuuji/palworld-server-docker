@@ -52,12 +52,6 @@ spec:
             {{- with .Values.server.ports }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
-          env:
-            - name: ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: "{{ .Release.Name }}-rcon-password"
-                  key: "rconPassword"
           envFrom:
           {{- if eq .Values.server.configSecretName "" }}
             - configMapRef:
