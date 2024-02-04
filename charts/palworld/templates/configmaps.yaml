@@ -61,13 +61,16 @@ data:
     exec_rcon_cmd save
     sleep 30
     exec_rcon_cmd "Broadcast Backing_up_Server_Data..."
-    exec_rcon_cmd backup
+    backup
     sleep 30
 
-    step=5
-    for i in $(seq 30 -$step 1); do
-      exec_rcon_cmd "Broadcast Rebooting_in_$i_seconds..."
-      sleep $step
+    exec_rcon_cmd "Broadcast Rebooting_in_60_seconds..."
+    sleep 30
+    exec_rcon_cmd "Broadcast Rebooting_in_30_seconds..."
+    sleep 20
+    for i in {10..1}; do
+      exec_rcon_cmd "Broadcast Rebooting_in_${i}_seconds..."
+      sleep 1
     done
 
     exec_rcon_cmd "Shutdown 1"
