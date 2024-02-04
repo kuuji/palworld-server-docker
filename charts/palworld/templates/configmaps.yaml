@@ -72,7 +72,7 @@ data:
       exec_rcon_cmd "Broadcast Rebooting_in_${i}_seconds..."
       sleep 1
     done
-
+    exec_rcon_cmd "Broadcast REBOOTING_NOW!"
     exec_rcon_cmd "Shutdown 1"
     sleep 30
     kubectl -n {{ .Values.namespace }} rollout restart deployment/{{ .Release.Name }}-server
