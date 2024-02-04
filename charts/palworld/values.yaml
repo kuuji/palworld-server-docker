@@ -3,6 +3,16 @@ namespace: palworld
 # -- (dict) The server configuration
 # @notationType -- bigValue
 server:
+  # affinity:
+  #   nodeAffinity:
+  #     preferredDuringSchedulingIgnoredDuringExecution:
+  #     - weight: 1
+  #       preference:
+  #         matchExpressions:
+  #         - key: kubernetes.io/hostname
+  #           operator: In
+  #           values:
+  #           - kji-coreos-1
   configSecretName: ""
   # -- Additional annotations to the resources
   annotations: { }
