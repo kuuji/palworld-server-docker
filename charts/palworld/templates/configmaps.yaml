@@ -35,7 +35,7 @@ data:
   {{ if .Values.server.config.server_name }}
   SERVER_NAME: {{ regexReplaceAll "\\W+" .Values.server.config.server_name "_" }}
   {{ else }}
-  SERVER_NAME: {{ printf "%s_%s" "palworld" (randAlphaNum 6 | nospace) }}
+  SERVER_NAME: default
   {{ end }}
   TZ: {{ .Values.server.config.timezone }}
   PUBLIC_IP: {{ .Values.server.config.public_ip | quote }}
