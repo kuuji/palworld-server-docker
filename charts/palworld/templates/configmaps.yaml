@@ -61,7 +61,7 @@ data:
     exec_rcon_cmd save
     sleep 30
     exec_rcon_cmd "Broadcast Backing_up_Server_Data..."
-    backup
+    kubectl exec -n {{ .Values.namespace }} -i pod/$cont backup
     sleep 30
 
     exec_rcon_cmd "Broadcast Rebooting_in_60_seconds..."
@@ -74,7 +74,7 @@ data:
     done
     exec_rcon_cmd "Broadcast REBOOTING_NOW!"
     exec_rcon_cmd "Shutdown 1"
-    sleep 30
+    sleep 5
     kubectl -n {{ .Values.namespace }} rollout restart deployment/{{ .Release.Name }}-server
   {{ end }}
   {{ end }}
